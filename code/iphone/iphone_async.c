@@ -983,10 +983,12 @@ void iphoneAsyncTic() {
 	// the game thread can now swap touches
 	pthread_mutex_unlock( &eventMutex );
 	
+#ifdef USE_GAME_THREAD
 	// signal the main thread that is probably blocked on this semaphore
 	if ( sem_post( ticSemaphore ) == -1 ) {
 		perror( "sem_post");
 	}
+#endif
 
 }
 

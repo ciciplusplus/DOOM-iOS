@@ -82,6 +82,9 @@ void *GameThread( void *args ) {
 }
 
 - (void)runFrame {
+#ifndef USE_GAME_THREAD
+    iphoneAsyncTic();
+#endif
 	iphoneFrame();
 }
 

@@ -1407,6 +1407,7 @@ void iphoneFrame() {
 			stopTic = gametic+1;
 			maketic = stopTic+1;
 		} else {
+#ifdef USE_GAME_THREAD
 			if ( sem_wait( ticSemaphore ) == -1 ) {
 				perror( "sem_wait" );
 			}
@@ -1415,6 +1416,7 @@ void iphoneFrame() {
 			while( sem_trywait( ticSemaphore ) != -1 ) {
 	//			printf( "frame %i, draining semaphore\n", iphoneFrameNum );
 			}
+#endif
 			loggedTimes[iphoneFrameNum&(MAX_LOGGED_TIMES-1)].afterSleep = SysIphoneMicroseconds();
 			if ( localGameID == gameID ) {
 				loggedTimes[iphoneFrameNum&(MAX_LOGGED_TIMES-1)].numPingTics = netPlayers[1].peer.currentPingTics;
