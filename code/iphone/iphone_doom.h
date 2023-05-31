@@ -22,7 +22,7 @@
 #define DOOM_IPHONE_VERSION 0.9
 
 // if defined, the game runs in a separate thread from the app event loop
-#define	USE_GAME_THREAD
+//#define	USE_GAME_THREAD
 
 typedef enum menuState {
 	IPM_GAME,
